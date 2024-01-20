@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(pared2.jpg);
+    background-size: cover;
+    margin: 0;
+    padding: 0; 
+}
+
+#all-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    height: 500px;
+    background-color: hsla(0, 0%, 95%, 0.925);
+    padding: 30px 20px;
+    top: 10%;
+    box-shadow: -5px 5px 15px rgba(0, 0, 0, 1);
+}
+#cargafoto {
+    position: relative; 
+    overflow: clip;
+    height: 95%;
+    width: 80%;
+    border: 1px solid gray;
+}
+
+/* Añade este estilo para permitir el estiramiento del div */
+#izquierda {
+    display: block;
+    position: absolute;
+    border: 1px solid gray;
+    height: 100%;
+    width: 50%;
+    background-color: rgba(74, 29, 179, 0.178);
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo para el nuevo div "imagenContainer" */
+#imagenContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: grab; /* Cambia el cursor para indicar que se puede arrastrar */
+}
+
+#cargafoto:active {
+    cursor: grabbing;
+}
+
+#cargafoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-drag: none;
+    user-select: none;
+    touch-action: none;
+}
+
+#cargafoto h2 {
+    text-align: center;
+    color: rgb(82, 81, 81);
+}

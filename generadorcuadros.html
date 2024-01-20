@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="generacuadro.css">
+    <title>CARGAR FOTO</title>
+    <style>
+        /* Tu estilo existente... */
+
+       
+    </style>
+</head>
+<body>
+
+    
+    <div id="all-container">
+
+        <div id="izquierda">
+            <div id="cargafoto">
+                <div id="imagenContainer"></div>
+                <h2>CARGAR FOTO</h2>
+            </div>
+            
+            <input type="file" id="fileInput" accept="image/*">
+            
+            <button onclick="document.getElementById('fileInput').click()">Cargar Foto</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function() {
+            var file = this.files[0];
+            var reader = new FileReader();
+            var imagenContainer = document.getElementById('imagenContainer');
+    
+            reader.onload = function(e) {
+                imagenContainer.style.backgroundImage = 'url(' + e.target.result + ')';
+                imagenContainer.style.width = '50%';
+                imagenContainer.style.top = '30px';
+                imagenContainer.style.left = '30px';
+    
+                imagenContainer.addEventListener('click', function() {
+                    setActiveDiv(this);
+                });
+    
+                var startX, startY, startLeft, startTop;
+    
+                imagenContainer.addEventListener('mousedown', function(event) {
+                    event.preventDefault();
+                    startX = event.clientX;
+                    startY = event.clientY;
+                    startLeft = parseInt(imagenContainer.style.left) || 0;
+                    startTop = parseInt(imagenContainer.style.top) || 0;
+    
+                    document.onmousemove = function(event) {
+                        var deltaX = event.clientX - startX;
+                        var deltaY = event.clientY - startY;
+    
+                        // Limitar el arrastre al área del contenedor
+                        var newLeft = startLeft + deltaX;
+                        var newTop = startTop + deltaY;
+    
+                        imagenContainer.style.left = newLeft + 'px';
+                        imagenContainer.style.top = newTop + 'px';
+                    };
+    
+                    document.onmouseup = function() {
+                        document.onmousemove = null;
+                        document.onmouseup = null;
+                    };
+                });
+            };
+    
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>
