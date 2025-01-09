@@ -3,6 +3,14 @@
     padding: 0;
 }
 
+h1{
+    color: rgb(3, 172, 0);
+    text-shadow: 4px 4px 5px rgb(24, 66, 24);
+    font-family: cursive;
+    font-size: 45px;
+    text-align: center;
+}
+
 body {
     background-image: url(pared2.jpg);
     background-size: cover;
